@@ -6,7 +6,7 @@ ARG TAG
 COPY go.mod go.sum ./
 COPY . ./
 
-RUN apk add --no-cache make
+RUN apk add --no-cache make git
 RUN go mod download
 RUN make
 

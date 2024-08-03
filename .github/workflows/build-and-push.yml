@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     env:
-      IMAGE_NAME: cri-exporter
+      IMAGE_NAME: image
     steps:
       - uses: actions/checkout@v4
 
@@ -59,7 +59,7 @@ jobs:
       - run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
 
       - run: |
-          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}
+          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
 
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
