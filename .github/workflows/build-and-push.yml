@@ -48,9 +48,12 @@ jobs:
   push:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     if: github.event_name == 'push'
     env:
-      IMAGE_NAME: image
+      IMAGE_NAME: exporter
     steps:
       - uses: actions/checkout@v4
 
